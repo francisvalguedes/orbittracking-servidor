@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orbit Tracking</title>
+  <meta name="description" content="Ferramentas de órbita, passagens e trajetórias para rastreio de objetos espaciais.">
+  <style>
+    :root {
+      --bg: #f6f7f9; --card: #ffffff; --text: #1a1d21; --muted: #5c6370; --border: #dde1e6;
+      --accent: #1c6fd1; --accent-soft: #e6f0fb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #16181c; --card: #1f2227; --text: #e8eaed; --muted: #9aa1ab; --border: #2e3239;
+        --accent: #5aa2f0; --accent-soft: #1d2a3a;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; background: var(--bg); color: var(--text);
+      font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      display: flex; flex-direction: column; align-items: center; padding: 48px 16px;
+    }
+    header, main, footer { width: 100%; max-width: 880px; }
+    h1 { font-size: 1.8rem; margin: 0 0 4px; }
+    header p { margin: 0 0 32px; color: var(--muted); }
+    main { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    a.card {
+      display: flex; flex-direction: column; gap: 8px; padding: 20px; border-radius: 12px;
+      background: var(--card); border: 1px solid var(--border); color: inherit; text-decoration: none;
+      transition: border-color .15s, transform .15s;
+    }
+    a.card:hover, a.card:focus-visible { border-color: var(--accent); transform: translateY(-2px); outline: none; }
+    .card h2 { margin: 0; font-size: 1.2rem; }
+    .card p { margin: 0; color: var(--muted); font-size: .95rem; flex: 1; }
+    .tag {
+      align-self: flex-start; font-size: .75rem; font-weight: 600; padding: 2px 8px; border-radius: 99px;
+      background: var(--accent-soft); color: var(--accent);
+    }
+    .tag.old { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .go { color: var(--accent); font-weight: 600; font-size: .95rem; }
+    footer { margin-top: 40px; color: var(--muted); font-size: .85rem; }
+    footer a { color: inherit; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Orbit Tracking</h1>
+    <p>Ferramentas de órbita, passagens e trajetórias para rastreio de objetos espaciais.</p>
+  </header>
+  <main>
+    <a class="card" data-sub="orbit" href="#">
+      <span class="tag">Recomendado</span>
+      <h2>orbit-tools</h2>
+      <p>Elementos orbitais (Celestrak, Space-Track), passagens sobre sensores, trajetórias para rastreio, órbita 3D e conversões de coordenadas.</p>
+      <span class="go">Abrir →</span>
+    </a>
+    <a class="card" data-sub="propag" href="#">
+      <span class="tag old">Versão anterior</span>
+      <h2>TrajectoryOrbitPropag</h2>
+      <p>App original em Streamlit, mantido durante a transição para comparar resultados e arquivos de rastreio.</p>
+      <span class="go">Abrir →</span>
+    </a>
+  </main>
+  <footer>
+    Código aberto:
+    <a href="https://github.com/francisvalguedes/orbit-tools">orbit-tools</a> ·
+    <a href="https://github.com/francisvalguedes/TrajectoryOrbitPropag">TrajectoryOrbitPropag</a>
+  </footer>
+  <script>
+    // Links para os subdomínios do mesmo domínio desta página: funciona em qualquer domínio sem editar o HTML
+    const base = location.hostname.replace(/^www\./, '')
+    for (const a of document.querySelectorAll('a[data-sub]')) {
+      a.href = `${location.protocol}//${a.dataset.sub}.${base}/`
+    }
+  </script>
+</body>
+</html>
