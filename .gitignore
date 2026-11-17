@@ -1,0 +1,36 @@
+# Repositório público: nada de segredos nem de dados reais da instalação.
+
+# Certificados e chaves (ficam só no servidor, em /etc/letsencrypt e ~/.ssh)
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# Configuração local e senhas (proxy, Space-Track, tokens)
+.env
+.env.*
+*.secret
+*credenciais*
+*senha*
+
+# DuckDNS: o token permite apontar o domínio para outro servidor
+duckdns*
+*.token
+
+# Saídas do servidor que expõem regras e caminhos
+iptables*.rules
+rules.v4
+rules.v6
+
+# Locais e radares reais (ficam no config/local/ do orbit-tools, no servidor)
+locais.csv
+radares.csv
+
+# Editores e sistema
+.vscode/
+.idea/
+*.swp
+.DS_Store
